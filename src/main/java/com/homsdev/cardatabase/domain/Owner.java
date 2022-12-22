@@ -23,7 +23,6 @@ public class Owner {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
     private List<Car> car;
      */
-
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "car_owner",
             joinColumns = {@JoinColumn(name = "ownerid")},

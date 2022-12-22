@@ -7,7 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 import javax.swing.*;
 import java.util.List;
 
-
+/**
+ * Extend CrudRepository<T,ID> for providing basic crud operations
+ * Extend PagingAndSortingRepository<T,ID> for retrieve entities using paging and sorting abstraction
+ *
+ */
 public interface CarRepository extends CrudRepository<Car, Long> {
 
     @Query("select c from Car c where c.brand = ?1")

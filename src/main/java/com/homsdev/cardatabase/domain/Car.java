@@ -4,6 +4,17 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * ORM: Technique to fetch and manipulate databases by using object-oriented paradigm
+ * JPA: Java persistence API
+ * Hibernate. JAVA ORM implementation for Java
+ */
+
+/**
+ * Add @Entity to a POJO that represents data that can be persisted in database
+ * Each entity must have a primary key indicated by @Id
+ *
+ */
 @Entity
 public class Car {
     @Id
