@@ -1,11 +1,15 @@
 package com.homsdev.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Owner {
 
     @Id
@@ -18,17 +22,9 @@ public class Owner {
      * CASCADE: The operations that must be cascaded to the target of the association.
      * mappedBy: The field that owns the relationship. Specifies foreign key
      */
-    /*
-    @OneToMany relation definition
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @JsonIgnore
     private List<Car> car;
-     */
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "car_owner",
-            joinColumns = {@JoinColumn(name = "ownerid")},
-            inverseJoinColumns = {@JoinColumn(name = "id")}
-    )
-    private Set<Car> cars = new HashSet<>();
 
     public Owner() {
     }
@@ -62,8 +58,6 @@ public class Owner {
         this.lastname = lastname;
     }
 
-    /*
-    Getter and setter @ManyToOne
     public List<Car> getCar() {
         return car;
     }
@@ -71,5 +65,5 @@ public class Owner {
     public void setCar(List<Car> car) {
         this.car = car;
     }
-     */
+
 }

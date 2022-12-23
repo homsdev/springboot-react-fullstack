@@ -37,13 +37,10 @@ public class CardatabaseApplication implements CommandLineRunner {
 
 		ownerRepository.saveAll(Arrays.asList(owner1,owner2));
 
-		carRepository.save(new Car("Ford","Mustang","Red","ADF-1121",2021,59000));
-		carRepository.save(new Car("Nissan","Leaf","White","SSJ-30002",2019,29000));
-		carRepository.save(new Car("Toyota","Prius","Silver","KKO-0212",2020,39000));
+		carRepository.save(new Car("Ford","Mustang","Red","ADF-1121",2021,59000,owner1));
+		carRepository.save(new Car("Nissan","Leaf","White","SSJ-30002",2019,29000,owner1));
+		carRepository.save(new Car("Toyota","Prius","Silver","KKO-0212",2020,39000,owner2));
 
-		carRepository.findAll().forEach(car->{
-			String line = String.format("%s %s",car.getBrand(),car.getModel());
-			logger.info(line);
-		});
+
 	}
 }

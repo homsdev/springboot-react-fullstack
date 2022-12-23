@@ -13,7 +13,6 @@ import java.util.Set;
 /**
  * Add @Entity to a POJO that represents data that can be persisted in database
  * Each entity must have a primary key indicated by @Id
- *
  */
 @Entity
 public class Car {
@@ -27,29 +26,21 @@ public class Car {
      * EAGER: Defines that data must be eagerly fetched.
      * LAZY: Defines that data can be lazily fetched.
      */
-    /*
-    Setting ManyToOne
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner")
+    @JoinColumn(name = "owner_id")
     private Owner owner;
-     */
-
-    /**
-     *
-     */
-    @ManyToMany(mappedBy = "cars")
-    private Set<Owner> owners = new HashSet<>();
 
     public Car() {
     }
 
-    public Car(String brand, String model, String color, String registerNumber, int yearFrom, int price) {
+    public Car(String brand, String model, String color, String registerNumber, int yearFrom, int price,Owner owner) {
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.registerNumber = registerNumber;
         this.yearFrom = yearFrom;
         this.price = price;
+        this.owner = owner;
     }
 
     public long getCarId() {
@@ -108,7 +99,6 @@ public class Car {
         this.price = price;
     }
 
-    /* @ManyToOne getters & setters
     public Owner getOwner() {
         return owner;
     }
@@ -116,13 +106,6 @@ public class Car {
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
-     */
 
-    public Set<Owner> getOwners() {
-        return owners;
-    }
 
-    public void setOwners(Set<Owner> owners) {
-        this.owners = owners;
-    }
 }

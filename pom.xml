@@ -57,6 +57,12 @@
 			<version>8.0.31</version>
 		</dependency>
 
+		<!-- Use spring data rest to generate restful services based on declared repositories -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+
 
 	</dependencies>
 
