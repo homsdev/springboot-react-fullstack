@@ -19,8 +19,11 @@ import java.util.Collections;
 @Component
 public class AuthenticationFilter extends OncePerRequestFilter {
 
-    @Autowired
     private JwtService jwtService;
+    @Autowired
+    public AuthenticationFilter(JwtService jwtService) {
+        this.jwtService = jwtService;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -32,7 +35,6 @@ public class AuthenticationFilter extends OncePerRequestFilter {
             Authentication authentication = new UsernamePasswordAuthenticationToken(user,null, Collections.emptyList());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
-
         filterChain.doFilter(request,response);
     }
 }

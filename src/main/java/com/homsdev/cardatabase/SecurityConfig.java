@@ -27,18 +27,22 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
-    @Autowired
     private AuthenticationFilter authenticationFilter;
-
-    @Autowired
     private AuthenticationEntryPoint exceptionHandler;
 
+    @Autowired
+    public SecurityConfig(
+            UserDetailsServiceImpl userDetailsService,
+            AuthenticationFilter authenticationFilter,
+            AuthenticationEntryPoint exceptionHandler) {
+        this.userDetailsService = userDetailsService;
+        this.authenticationFilter = authenticationFilter;
+        this.exceptionHandler = exceptionHandler;
+    }
+
     /**
-     * Securing all endpoints
-     *
+     * Secures all endpoints
      * @param http
      * @throws Exception
      */
@@ -58,27 +62,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Adding in memory users to our application
-     * Only for development phase
-     *
-     * @return InMemory user authentication
+     * Set CORS Configuration
+     * @return
      */
-//    @Bean
-//    @Override
-//    protected UserDetailsService userDetailsService() {
-//        UserDetails admin = User.withDefaultPasswordEncoder()
-//                .username("admin")
-//                .password("1234")
-//                .roles("ADMIN")
-//                .build();
-//        UserDetails user = User.withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("1234")
-//                .roles("USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(admin,user);
-//    }
-
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();

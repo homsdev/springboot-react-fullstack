@@ -16,14 +16,16 @@ import java.util.List;
 public class CardatabaseApplication implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(CardatabaseApplication.class);
 
-    @Autowired
     private CarRepository carRepository;
-
-    @Autowired
     private OwnerRepository ownerRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public CardatabaseApplication(CarRepository carRepository, OwnerRepository ownerRepository, UserRepository userRepository) {
+        this.carRepository = carRepository;
+        this.ownerRepository = ownerRepository;
+        this.userRepository = userRepository;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(CardatabaseApplication.class, args);
