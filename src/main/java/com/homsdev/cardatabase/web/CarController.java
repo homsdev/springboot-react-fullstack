@@ -19,6 +19,4 @@ public class CarController {
     public Iterable<Car> getCars(){
         return carRepository.findAll();
     }
-
-
 }
