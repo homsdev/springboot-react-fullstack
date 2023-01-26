@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CarController {
-    @Autowired
     private CarRepository carRepository;
+    @Autowired
+    public CarController(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     @RequestMapping(value = "/cars",method = RequestMethod.GET)
     public Iterable<Car> getCars(){
         return carRepository.findAll();
     }
-
-
 }
