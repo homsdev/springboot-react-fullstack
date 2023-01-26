@@ -1,4 +1,4 @@
-package com.homsdev.cardatabase.domain;
+package com.homsdev.cardatabase.domain.user;
 
 public class AccountCredentials {
     private String username;

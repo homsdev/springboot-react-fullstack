@@ -1,14 +1,19 @@
 package com.homsdev.cardatabase.service;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.Date;
+import java.util.Map;
+import java.util.function.Function;
 
 @Service
 public class JwtService {
@@ -25,13 +30,14 @@ public class JwtService {
 
     /**
      * Generate signed JWT token
-     *
      * @param username
      * @return
      */
     public String getToken(String username) {
         String token = Jwts.builder()
                 .setSubject(username)
+                .claim("username",username)
+                .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(key)
                 .compact();
@@ -40,6 +46,7 @@ public class JwtService {
 
     /**
      * Get a token from request Authorization Header & verify token and get username
+     *
      * @param request
      * @return
      */
@@ -58,5 +65,4 @@ public class JwtService {
         }
         return null;
     }
-
 }

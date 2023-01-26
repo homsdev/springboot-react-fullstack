@@ -1,8 +1,6 @@
 package com.homsdev.cardatabase.domain;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * ORM: Technique to fetch and manipulate databases by using object-oriented paradigm

@@ -1,6 +1,12 @@
 package com.homsdev.cardatabase;
 
-import com.homsdev.cardatabase.domain.*;
+import com.homsdev.cardatabase.domain.Car;
+import com.homsdev.cardatabase.domain.CarRepository;
+import com.homsdev.cardatabase.domain.Owner;
+import com.homsdev.cardatabase.domain.OwnerRepository;
+import com.homsdev.cardatabase.domain.user.Role;
+import com.homsdev.cardatabase.domain.user.User;
+import com.homsdev.cardatabase.domain.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +15,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
-import java.util.List;
 
 
 @SpringBootApplication
@@ -43,11 +48,11 @@ public class CardatabaseApplication implements CommandLineRunner {
 
         // Username: user, password: user
         userRepository.save(new User("user",
-                "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "USER"));
+                "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", Role.USER));
 
         // Username: admin, password: admin
         userRepository.save(new User("admin",
-                "$2a$10$8cjz47bjbR4Mn8GMg9IZx.vyjhLXR/SKKMSZ9.mP9vpMu0ssKi8GW", "ADMIN"));
+                "$2a$10$8cjz47bjbR4Mn8GMg9IZx.vyjhLXR/SKKMSZ9.mP9vpMu0ssKi8GW", Role.ADMIN));
 
     }
 }

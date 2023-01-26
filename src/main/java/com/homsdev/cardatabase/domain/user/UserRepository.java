@@ -1,4 +1,4 @@
-package com.homsdev.cardatabase.domain;
+package com.homsdev.cardatabase.domain.user;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
